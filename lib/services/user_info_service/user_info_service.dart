@@ -1,6 +1,6 @@
-import 'package:flutter_mvvm/models/domain/user/user_info.dart';
-import 'package:flutter_mvvm/services/UserInfoService/user_info_service_interface.dart';
-import 'package:flutter_mvvm/services/base/base_service.dart';
+import '../../models/domain/user/user_info.dart';
+import '../user_info_service/user_info_service_interface.dart';
+import '../base/base_service.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IUserInfoService)

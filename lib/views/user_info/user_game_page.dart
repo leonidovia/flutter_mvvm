@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mvvm/models/application/events/game/gift_received_event_args.dart';
 
 import '../../view_models/user_info/user_game_view_model_interface.dart';
 import '../base/page_widget.dart';
@@ -15,6 +16,12 @@ class UserGamePage extends PageWidget<IUserGameViewModel> {
 }
 
 class _UserGamePageState extends PageWidgetState<IUserGameViewModel> {
+  @override
+  void initState() {
+    super.initState();
+    vm.giftReceived.subscribe(_onGifReceived);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,4 +41,18 @@ class _UserGamePageState extends PageWidgetState<IUserGameViewModel> {
       ),
     );
   }
+
+  void _onGifReceived(Object sender, GiftReceivedEventArgs e) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Gift!'),
+          content: Text('\$${e.gift}'),
+          actions: [
+            TextButton(
+              onPressed: Navigator.of(context).pop,
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
 }
