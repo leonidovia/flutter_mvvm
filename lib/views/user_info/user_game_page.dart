@@ -19,7 +19,7 @@ class _UserGamePageState extends PageWidgetState<IUserGameViewModel> {
   @override
   void initState() {
     super.initState();
-    vm.giftReceived.subscribe(_onGifReceived);
+    vm.giftReceived.subscribe(_onGiftReceived);
   }
 
   @override
@@ -42,7 +42,7 @@ class _UserGamePageState extends PageWidgetState<IUserGameViewModel> {
     );
   }
 
-  void _onGifReceived(Object sender, GiftReceivedEventArgs e) => showDialog(
+  void _onGiftReceived(Object sender, GiftReceivedEventArgs e) => showDialog(
         context: context,
         builder: (context) => AlertDialog(
           title: Text('Gift!'),
