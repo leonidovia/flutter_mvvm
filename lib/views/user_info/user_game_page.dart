@@ -36,7 +36,7 @@ class _UserGamePageState extends PageWidgetState<IUserGameViewModel> {
         ),
       ),
       floatingActionButton: PlayButtonVL(
-        isLoadingVN: vm.isLoading,
+        isLoadingVN: vm.isLoadingVN,
         onPressed: vm.play,
       ),
     );

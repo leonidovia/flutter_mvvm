@@ -8,7 +8,7 @@ abstract class IUserGameViewModel extends PageViewModel {
   String get name;
   String get lastName;
   ValueNotifier<int> get moneyVN;
-  ValueNotifier<bool> get isLoading;
+  ValueNotifier<bool> get isLoadingVN;
 
   ViewModelEvent<GiftReceivedEventArgs> get giftReceived;
 

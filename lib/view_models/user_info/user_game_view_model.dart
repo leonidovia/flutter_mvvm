@@ -27,7 +27,7 @@ class UserGameViewModel extends PageViewModel implements IUserGameViewModel {
   final moneyVN = ValueNotifier<int>(0);
 
   @override
-  final isLoading = ValueNotifier<bool>(false);
+  final isLoadingVN = ValueNotifier<bool>(false);
 
   @override
   final giftReceived = ViewModelEvent<GiftReceivedEventArgs>();
@@ -41,16 +41,16 @@ class UserGameViewModel extends PageViewModel implements IUserGameViewModel {
   void init() async {
     super.init();
 
-    isLoading.value = true;
+    isLoadingVN.value = true;
     moneyVN.value = await _gameService.getUserMoney(_userInfo.id);
-    isLoading.value = false;
+    isLoadingVN.value = false;
   }
 
   @override
   Future<void> play() async {
-    isLoading.value = true;
+    isLoadingVN.value = true;
     moneyVN.value = await _gameService.play(_userInfo.id, 100);
-    isLoading.value = false;
+    isLoadingVN.value = false;
   }
 
   void _onGiftReceived(Object sender, GiftReceivedEventArgs e) {
@@ -62,7 +62,7 @@ class UserGameViewModel extends PageViewModel implements IUserGameViewModel {
   @override
   void dispose() {
     moneyVN.dispose();
-    isLoading.dispose();
+    isLoadingVN.dispose();
     giftReceived.dispose();
 
     _gameService.giftReceived.unsubscribe(_onGiftReceived);
